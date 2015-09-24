@@ -42,3 +42,41 @@ impl Stringify for String {
     CString::new(self.to_string()).unwrap().as_ptr()
   }
 }
+
+#[test]
+fn libc_char_convert_to_str_test() {
+  let libc_char = CString::new("something".to_string()).unwrap().as_ptr();
+  assert_eq!(libc_char.convert_to_str(), "something");
+}
+
+#[test]
+fn libc_char_convert_to_string_test() {
+  let libc_char = CString::new("something".to_string()).unwrap().as_ptr();
+  assert_eq!(libc_char.convert_to_string(), "something".to_string());
+}
+
+#[test]
+fn libc_char_convert_to_libc_char_test() {
+  let libc_char1 = CString::new("something".to_string()).unwrap().as_ptr();
+  let libc_char2 = CString::new("something".to_string()).unwrap().as_ptr();
+  assert_eq!(libc_char1.convert_to_libc_char(), libc_char2);
+}
+
+#[test]
+fn string_convert_to_str_test() {
+  let string = "something".to_string();
+  assert_eq!(string.convert_to_str(), "something");
+}
+
+#[test]
+fn string_convert_to_string_test() {
+  let string = "something".to_string();
+  assert_eq!(string.convert_to_string(), "something".to_string());
+}
+
+#[test]
+fn string_convert_to_libc_char_test() {
+  let libc_char1 = CString::new("something".to_string()).unwrap().as_ptr();
+  let libc_char2 = CString::new("something".to_string()).unwrap().as_ptr();
+  assert_eq!(libc_char1.convert_to_libc_char(), libc_char2);
+}
