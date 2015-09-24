@@ -1,0 +1,12 @@
+[package]
+
+name = "convert"
+version = "0.0.1"
+authors = [ "Mike Piccolo <mfpiccolo@gmail.com>" ]
+
+[lib]
+name = "convert"
+crate-type = ["dylib"]
+
+[dependencies]
+libc = "0.1.10"
