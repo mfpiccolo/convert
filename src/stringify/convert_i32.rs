@@ -7,9 +7,13 @@ use std::borrow::Cow;
 use std::mem;
 
 impl Stringify for i32 {
+  fn convert_to_cstring(&self) -> CString {
+    CString::new(self.convert_to_str()).unwrap()
+  }
+
   fn convert_to_cstr(&self) -> &CStr {
-    let str = self.convert_to_str();
-    unsafe { CStr::from_ptr(CString::new(str).unwrap().as_ptr()) }
+    let cstring = self.convert_to_cstring();
+    unsafe { CStr::from_ptr(cstring.as_ptr()) }
   }
 
   fn convert_to_cow_str(&self) -> Cow<str> {
@@ -30,6 +34,6 @@ impl Stringify for i32 {
   }
 
   fn convert_to_libc_char(&self) -> *const libc::c_char {
-    CString::new(self.to_string()).unwrap().as_ptr()
+    self.to_string().convert_to_libc_char()
   }
 }

@@ -1,8 +1,5 @@
-#[allow(unused_imports)]
 use stringify::Stringify;
-#[allow(unused_imports)]
 use std::ffi::{CStr, CString};
-#[allow(unused_imports)]
 use std::borrow::Cow;
 
 #[test]
@@ -35,5 +32,7 @@ fn i32_convert_to_libc_char_test() {
   let integer = 1;
   let libc_char1 = integer.convert_to_libc_char();
   let libc_char2 = CString::new("1".to_string()).unwrap().as_ptr();
-  assert_eq!(libc_char1, libc_char2);
+  unsafe {
+    assert_eq!(*libc_char1, *libc_char2);
+  }
 }

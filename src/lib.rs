@@ -1,9 +1,11 @@
+#![feature(test)]
 extern crate libc;
 
 pub mod stringify;
 
 use stringify::Stringify;
 mod tests;
+mod benches;
 
 #[no_mangle]
 pub extern fn concat(s1: *const libc::c_char, s2: *const libc::c_char) -> *const libc::c_char {
@@ -19,3 +21,4 @@ pub extern fn sum_to_s(x: i32, y: i32) -> *const libc::c_char {
 pub extern fn concat_nums(x: i32, y: i32) -> *const libc::c_char {
   (x.convert_to_string() + y.convert_to_str()).convert_to_libc_char()
 }
+
