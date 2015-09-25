@@ -20,8 +20,10 @@ test benches::convert_string_bench::convert_to_string_bench       ... bench:    
 ```
 
 ### Ruby Benchmarks
+```
 Rust#string_to_libc_char_test:     0.000000   0.000000   0.000000 (  0.000045)
 
 Rust#i32_to_libc_char_test:        0.000000   0.000000   0.000000 (  0.000017)
 
 Rust#libc_char_to_libc_char_test:  0.000000   0.000000   0.000000 (  0.000008)
+```
