@@ -18,3 +18,10 @@ test benches::convert_string_bench::convert_to_libc_char_bench    ... bench:    
 test benches::convert_string_bench::convert_to_str_bench          ... bench:           0 ns/iter (+/- 0)
 test benches::convert_string_bench::convert_to_string_bench       ... bench:          95 ns/iter (+/- 17)
 ```
+
+### Ruby Benchmarks
+Rust#string_to_libc_char_test:     0.000000   0.000000   0.000000 (  0.000045)
+
+Rust#i32_to_libc_char_test:        0.000000   0.000000   0.000000 (  0.000017)
+
+Rust#libc_char_to_libc_char_test:  0.000000   0.000000   0.000000 (  0.000008)
