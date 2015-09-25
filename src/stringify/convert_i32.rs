@@ -4,6 +4,7 @@ use std;
 use stringify::Stringify;
 use std::ffi::{CStr, CString};
 use std::borrow::Cow;
+use std::mem;
 
 impl Stringify for i32 {
   fn convert_to_cstr(&self) -> &CStr {
@@ -16,8 +17,12 @@ impl Stringify for i32 {
   }
 
   fn convert_to_str(&self) -> &str {
-    // self.to_string().convert_to_str()
-    "1"
+    // TODO: figure out why this won't work without unsafe
+    unsafe {
+      let ret = mem::transmute(&self.to_string() as &str);
+      mem::forget(self);
+      ret
+    }
   }
 
   fn convert_to_string(&self) -> String {

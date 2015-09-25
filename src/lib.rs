@@ -19,4 +19,3 @@ pub extern fn sum_to_s(x: i32, y: i32) -> *const libc::c_char {
 pub extern fn concat_nums(x: i32, y: i32) -> *const libc::c_char {
   (x.convert_to_string() + y.convert_to_str()).convert_to_libc_char()
 }
-

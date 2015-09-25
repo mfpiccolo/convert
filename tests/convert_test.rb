@@ -8,13 +8,13 @@ describe Convert do
     end
   end
 
-  describe "#sum" do
+  describe "#sum_to_s" do
     it "concatinates two strings" do
       Convert.sum_to_s(55, 45).must_equal "100"
     end
   end
 
-  describe "#sum" do
+  describe "#concat_nums" do
     it "concatinates two strings" do
       Convert.concat_nums(55, 45).must_equal "5545"
     end
