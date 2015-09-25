@@ -1,5 +1,6 @@
 extern crate libc;
 
+use std;
 use stringify::Stringify;
 use std::ffi::{CStr, CString};
 use std::borrow::Cow;
@@ -15,7 +16,7 @@ impl Stringify for i32 {
   }
 
   fn convert_to_str(&self) -> &str {
-    // TODO
+    // self.to_string().convert_to_str()
     "1"
   }
 
