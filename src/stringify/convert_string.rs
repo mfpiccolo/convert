@@ -28,6 +28,8 @@ impl Stringify for String {
   }
 
   fn convert_to_libc_char(&self) -> *const libc::c_char {
-    CString::new(self.to_string()).unwrap().as_ptr()
+    let cstring = CString::new(self.to_string()).unwrap();
+    let c_ptr: *const libc::c_char = cstring.as_ptr();
+    c_ptr
   }
 }

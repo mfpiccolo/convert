@@ -34,6 +34,10 @@ impl Stringify for i32 {
   }
 
   fn convert_to_libc_char(&self) -> *const libc::c_char {
-    self.to_string().convert_to_libc_char()
+    // TODO why does the convert_to_libc_char() not work here?
+    // self.to_string().convert_to_libc_char()
+    let cstring = CString::new(self.to_string()).unwrap();
+    let c_ptr: *const libc::c_char = cstring.as_ptr();
+    c_ptr
   }
 }

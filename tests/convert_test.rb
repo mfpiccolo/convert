@@ -2,21 +2,26 @@ require "minitest/autorun"
 require "./convert"
 
 describe Convert do
-  describe "#concat" do
-    it "concatinates two strings" do
-      Convert.concat('toge', 'ther').must_equal 'together'
+  before do
+    # TODO: figure out why I need a no_op call for ffi functions to work
+    Convert.no_op
+  end
+
+  describe "#string_to_libc_char_test" do
+    it "returns a string" do
+      Convert.string_to_libc_char_test.must_equal 'a string'
     end
   end
 
-  describe "#sum_to_s" do
-    it "concatinates two strings" do
-      Convert.sum_to_s(55, 45).must_equal "100"
+  describe "#i32_to_libc_char_test" do
+    it "returns a string of an integer" do
+      Convert.i32_to_libc_char_test.must_equal "1"
     end
   end
 
-  describe "#concat_nums" do
-    it "concatinates two strings" do
-      Convert.concat_nums(55, 45).must_equal "5545"
+  describe "#libc_char_to_libc_char_test" do
+    it "returns the string" do
+      Convert.libc_char_to_libc_char_test.must_equal "a string"
     end
   end
 end
