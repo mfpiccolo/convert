@@ -7,7 +7,7 @@ use std::borrow::Cow;
 use std::mem;
 
 impl Stringify for i32 {
-  fn convert_to_cstring(&self) -> CString {
+  fn convert_to_cstring(self) -> CString {
     CString::new(self.convert_to_str()).unwrap()
   }
 
@@ -29,11 +29,11 @@ impl Stringify for i32 {
     }
   }
 
-  fn convert_to_string(&self) -> String {
+  fn convert_to_string(self) -> String {
     self.to_string()
   }
 
-  fn convert_to_libc_char(&self) -> *const libc::c_char {
+  fn convert_to_libc_char(self) -> *const libc::c_char {
     // TODO why does the convert_to_libc_char() not work here?
     // self.to_string().convert_to_libc_char()
     let cstring = CString::new(self.to_string()).unwrap();

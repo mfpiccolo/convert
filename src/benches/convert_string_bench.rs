@@ -25,12 +25,10 @@ fn convert_to_str_bench(b: &mut Bencher) {
 
 #[bench]
 fn convert_to_string_bench(b: &mut Bencher) {
-  let s = String::from("hello");
-  b.iter(|| s.convert_to_string());
+  b.iter(|| String::from("hello").convert_to_string());
 }
 
 #[bench]
 fn convert_to_libc_char_bench(b: &mut Bencher) {
-  let s = String::from("hello");
-  b.iter(|| s.convert_to_libc_char());
+  b.iter(|| String::from("hello").convert_to_libc_char());
 }

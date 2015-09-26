@@ -6,8 +6,8 @@ use std::ffi::{CStr, CString};
 use std::borrow::Cow;
 
 impl Stringify for String {
-  fn convert_to_cstring(&self) -> CString {
-    CString::new(self.convert_to_str()).unwrap()
+  fn convert_to_cstring(self) -> CString {
+    CString::new(self).unwrap()
   }
 
   fn convert_to_cstr(&self) -> &CStr {
@@ -23,13 +23,11 @@ impl Stringify for String {
     self as &str
   }
 
-  fn convert_to_string(&self) -> String {
+  fn convert_to_string(self) -> String {
     self.to_string()
   }
 
-  fn convert_to_libc_char(&self) -> *const libc::c_char {
-    let cstring = CString::new(self.to_string()).unwrap();
-    let c_ptr: *const libc::c_char = cstring.as_ptr();
-    c_ptr
+  fn convert_to_libc_char(self) -> *const libc::c_char {
+    self.convert_to_cstring().as_ptr()
   }
 }
