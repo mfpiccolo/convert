@@ -4,19 +4,13 @@ use stringify::Stringify;
 use std::ffi::{CStr, CString};
 
 #[no_mangle]
-pub extern fn i32_convert_to_string_test() -> *const libc::c_char {
-  let x: i32 = 1;
-  let valid = x.convert_to_string() == "1".to_string();
-  if valid {
-    x.convert_to_libc_char()
-  } else {
-    "Fail".to_string().convert_to_libc_char()
-  }
+pub extern fn i32_convert_to_string_test() {
+  let y = convert!(100 => String) as String;
+  println!("{:?}", y);
 }
 
 #[no_mangle]
 pub extern fn i32_to_libc_char_test() -> *const libc::c_char {
-  let x: i32 = 1;
-  x.convert_to_libc_char()
+  convert!(1 => *const libc::c_char) as *const libc::c_char
 }
 

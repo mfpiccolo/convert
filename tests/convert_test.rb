@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require 'pry-byebug'
 require "./convert"
+require 'open3'
 
 describe Convert do
   before do
@@ -20,12 +21,6 @@ describe Convert do
     describe "#i32_to_libc_char_test" do
       it "returns a string of an integer" do
         Convert.i32_to_libc_char_test.must_equal "1"
-      end
-    end
-
-    describe "#i32_to_string_test" do
-      it "returns a string of an integer" do
-        Convert.i32_convert_to_string_test.must_equal "1"
       end
     end
   end
