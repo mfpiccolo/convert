@@ -4,6 +4,7 @@ pub mod convert_libc_char;
 pub mod convert_i32;
 pub mod convert_string;
 pub mod convert_str;
+pub mod convert_cstring;
 
 use std::ffi::{CStr, CString};
 use std::borrow::Cow;

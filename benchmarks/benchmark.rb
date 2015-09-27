@@ -22,4 +22,11 @@ Benchmark.bm do |x|
       Convert.libc_char_to_libc_char_test
    end
   end
+  puts ""
+
+  x.report("Rust#str_to_libc_char_test:") do
+   for i in 1..n
+      Convert.str_to_libc_char_test
+   end
+  end
 end
