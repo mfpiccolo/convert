@@ -11,7 +11,10 @@ impl Stringify for *const libc::c_char {
   }
 
   fn convert_to_cstr(&self) -> &CStr {
-    unsafe { CStr::from_ptr(*self) }
+    unsafe {
+      assert!(!self.is_null());
+      CStr::from_ptr(*self)
+    }
   }
 
   fn convert_to_cow_str(&self) -> Cow<str> {
