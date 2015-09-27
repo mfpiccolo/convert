@@ -18,10 +18,14 @@ pub extern fn no_op() {}
 
 #[no_mangle]
 pub extern fn test() {
-  let x = convert!(34 => String) as String;
+  let x = convert!(34 => String);
   println!("{:?}", x);
-  let y = convert!(34 => CString) as CString;
+  let y = convert!(34 => CString);
+  y.laksjdf();
+  let z = convert!(34 => &'static str);
+  z.laksjdf();
   println!("{:?}", y);
-  // let q = convert!(34 => *const libc::c_char) as *const libc::c_char;
-  // println!("{:?}", q);
+  let q = convert!("34" => *const libc::c_char);
+  q.aldsjf();
+  println!("{:?}", q);
 }
