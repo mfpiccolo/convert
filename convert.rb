@@ -8,6 +8,7 @@ module Convert
   attach_function :no_op, [], :void
 
   attach_function :string_to_libc_char_test, [], :string
+  attach_function :str_to_libc_char_test, [], :string
   attach_function :i32_to_libc_char_test, [], :string
   attach_function :i32_convert_to_string_test, [], :string
   attach_function :libc_char_to_libc_char_test, [], :string

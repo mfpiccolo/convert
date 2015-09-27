@@ -37,4 +37,12 @@ describe Convert do
       end
     end
   end
+
+  describe "libc_char conversion" do
+    describe "#libc_char_to_libc_char_test" do
+      it "returns the string" do
+        Convert.str_to_libc_char_test.must_equal "a string"
+      end
+    end
+  end
 end
