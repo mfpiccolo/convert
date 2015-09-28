@@ -2,7 +2,7 @@ Welcome to convert for Rust
 =======================
 
 
-There are a lot of types in Rust!  This crate will help you perform common type conversions ease.  It will also be a place to encapsulate best practices for conversion.  That means that these conversions will always be fast and safe.
+There are a lot of types in Rust!  This crate will help you perform common type conversions with ease.  It will also be a place to encapsulate best practices for conversion.  That means that these conversions will always be fast and safe.
 
 ----------
 
@@ -26,7 +26,7 @@ main {
   convert!(1 => String); // returns a String
   convert!(2 => CString); // returns a CString
   convert!(3 => *const libc::c_char); // returns a *const libc::c_char
-  
+
   convert!("String1".to_string() => *const libc::c_char); // returns a *const libc::c_char
   convert!("String2".to_string() => CString); // returns a CString
 
@@ -69,7 +69,7 @@ Implemented Conversions
 Future Conversions
 -------------
 | From Type   | To Type     | Supported |Status           |
-| :-------:   | :----:      | :---:     | :---:           |     
+| :-------:   | :----:      | :---:     | :---:           |
 | `String`    | `i32 (ect.)`|  X        | not implemented |
 | `vec<_>`    | `[T; _]`    |  X        | not implemented |
 | ?           | ?           |  X        | not implemented |
@@ -84,7 +84,7 @@ If you find a memeory safety problem or any other bug please open up an issue.  
 If you can implement a conversion faster then the current benchmarks and all the tests are still passing then open up a pull request.  Faster is better!
 
 #### Tests
-All tests must pass for any pull request to be merged in.  This mean all the following commands must pass.
+All tests must pass for any pull request to be merged in.  If the pr is a new feature then tests must be provided The following commands must pass.
 ```
 cargo build
 cargo test
@@ -94,8 +94,8 @@ ruby tests/convert_test.rb
 > Note:  Working on setting up CI
 
 #### Benchmarks
-For a pull request, not concerning safety, to be merged the benchmarks must be at least as fast as the existing benchmark.
- 
+For a non-safety pull request to be merged a new benchmark must be provided or the existing benchmarks must be at least as fast.
+
 Current Benchmarks
 -------------
 #### Rust Benchmarks
@@ -122,6 +122,6 @@ test benches::convert_string_bench::convert_to_string_bench       ... bench:    
 Rust#string_to_libc_char_test:     0.000000   0.000000   0.000000 (  0.000045)
 
 Rust#i32_to_libc_char_test:        0.000000   0.000000   0.000000 (  0.000017)
-```
+
 Rust#libc_char_to_libc_char_test:  0.000000   0.000000   0.000000 (  0.000008)
 ```
